@@ -44,3 +44,16 @@ export function randomU64(): u64 { // see: v8/src/base/utils/random-number-gener
   random_state1_64 = s1;
   return s0;
 }
+
+/**
+ * popcnt should be 32 on average, if our sequence is "random enough".
+ */
+export function test(): f64 {
+  let sum: u64 = 0;
+  for (let i = 0; i < 10000; i++) {
+    let n: u64 = randomU64();
+    sum += popcnt<u64>(n);
+  }
+  let result = <f64>sum / <f64>10000;
+  return result; // 31.9805 on the next 10000 values after the javascript test.
+}

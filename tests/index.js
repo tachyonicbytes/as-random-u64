@@ -9,6 +9,7 @@ const wasmModule = loader.instantiateSync(
 
 function main(wasmModule) {
   let randomU64 = wasmModule.exports.randomU64;
+  let test = wasmModule.exports.test;
 
   let map = new Map();
   for (let i = 0n; i < 10n; i++) {
@@ -23,6 +24,8 @@ function main(wasmModule) {
 
   console.log("Test randomU64 distribution. All values should be fairly close, except for 0.");
   console.log(map);
+
+  console.log(test());
 }
 
 main(wasmModule)
