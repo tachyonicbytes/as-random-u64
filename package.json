@@ -1,0 +1,25 @@
+{
+  "name": "as-random-u64",
+  "version": "0.0.1",
+  "description": "AssemblyScript package to generate a random u64",
+  "main": "index.js",
+  "scripts": {
+    "test": "node tests",
+    "asbuild:debug": "asc assembly/index.ts --target debug",
+    "asbuild:release": "asc assembly/index.ts --target release",
+    "asbuild": "npm run asbuild:debug && npm run asbuild:release",
+    "start": "npx serve ."
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@assemblyscript/loader": "^0.24.1",
+    "assemblyscript": "^0.24.1"
+  },
+  "exports": {
+    ".": {
+      "import": "./build/release.js",
+      "types": "./build/release.d.ts"
+    }
+  }
+}
